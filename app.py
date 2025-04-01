@@ -12,9 +12,9 @@ file_manager = FileStorageManager(FILES_FOLDER)
 def index():
     return render_template('index.html')
 
-@app.route('/items')
-@app.route('/items/folder/<item_id>')
-def items(item_id=None):
+@app.route('/files')
+@app.route('/files/folder/<item_id>')
+def files(item_id=None):
     structure = file_manager.get_structure()
     items_list = structure['items']
     
@@ -45,12 +45,12 @@ def items(item_id=None):
            (hasattr(item, 'parent') and item.parent == item_id)
     ]
     
-    return render_template('items.html', 
+    return render_template('files.html', 
                          items=filtered_items, 
                          current_folder=current_folder,
                          breadcrumbs=breadcrumbs)
 
-@app.route('/items/file/<item_id>')
+@app.route('/files/file/<item_id>')
 def item_detail(item_id):
     structure = file_manager.get_structure()
     item = next((item for item in structure['items'] if item.id == item_id), None)
