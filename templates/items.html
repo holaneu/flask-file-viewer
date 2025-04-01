@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Items List{% endblock %}
+
+{% block content %}
+<h1>File Explorer</h1>
+
+{% include '_breadcrumbs.html' %}
+
+<div class="file-list">
+    {% if current_folder %}
+    <div class="item folder">
+        <a href="{{ url_for('items', item_id=current_folder.parent) if current_folder.parent else url_for('items') }}">
+            📁 ..
+        </a>
+    </div>
+    {% endif %}
+    
+    {% for item in items|sort(attribute='type', reverse=true)|sort(attribute='title') %}
+    <div class="item {{ item.type }}">
+        {% if item.type == 'folder' %}
+        <a href="{{ url_for('items', item_id=item.id) }}">📁 {{ item.title }}</a>
+        {% else %}
+        <a href="{{ url_for('item_detail', item_id=item.id) }}">📄 {{ item.title }}</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .file-list {
+        margin: 1em 0;
+    }
+    .item {
+        padding: 0.3em 0;
+    }
+    .item a {
+        text-decoration: none;
+        color: #333;
+    }
+    .item a:hover {
+        text-decoration: underline;
+    }
+    .folder a {
+        color: #2c5282;
+    }
+</style>
+{% endblock %}
