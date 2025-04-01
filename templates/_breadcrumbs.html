@@ -20,13 +20,12 @@
   }
 </style>
 <div class="breadcrumbs">
-    <a href="{{ url_for('items') }}" class="breadcrumb-item">Root</a>
+    <a href="{{ url_for('files') }}" class="breadcrumb-item">Root</a>
     {% if breadcrumbs %}
         {% for folder in breadcrumbs %}
             <span class="breadcrumb-separator">›</span>
-            <a href="{{ url_for('items', item_id=folder.id) }}" class="breadcrumb-item">{{ folder.title }}</a>
+            <a href="{{ url_for('files', item_id=folder.id) }}" class="breadcrumb-item">{{ folder.title }}</a>
         {% endfor %}
     {% endif %}
-    
 </div>
 {% endif %}
