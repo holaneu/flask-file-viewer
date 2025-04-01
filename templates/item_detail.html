@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.title }}{% endblock %}
+
+{% block content %}
+
+<h1>{{ item.title }}</h1>
+
+{% include '_breadcrumbs.html' %}
+
+<pre>{{ content }}</pre>
+<p><a href="{{ url_for('items') }}">Back to Items</a></p>
+{% endblock %}
