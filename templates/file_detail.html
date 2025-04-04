@@ -6,7 +6,7 @@
 
 <h1>{{ item.title }}</h1>
 
-{% include '_breadcrumbs.html' %}
+{% include 'partials/files_breadcrumbs.html' %}
 
 <pre>{{ content }}</pre>
 <p><a href="{{ url_for('files') }}">Back to Files</a></p>

@@ -73,7 +73,7 @@ def item_detail(item_id):
         full_path = os.path.join(FILES_FOLDER, item.file_path)
         with open(full_path, 'r', encoding='utf-8') as f:
             content = f.read()
-        return render_template('item_detail.html', item=item, content=content, breadcrumbs=breadcrumbs)
+        return render_template('file_detail.html', item=item, content=content, breadcrumbs=breadcrumbs)
     except Exception as e:
         abort(500)
 
